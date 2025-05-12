@@ -1,0 +1,43 @@
+RewriteEngine On
+# Replace with your actual IP address
+#RewriteCond %{REMOTE_ADDR} !^25\.8\.155\.187$
+
+# Allow maintenance.html and other static files
+#RewriteCond %{REQUEST_URI} !^/maintenance\.php$
+#RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|gif|ico)$ [NC]
+
+# Redirect everyone else to maintenance page
+#RewriteRule ^.*$ /maintenance.php [R=302,L]
+
+
+
+
+
+
+
+
+#RewriteCond %{HTTPS} off 
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Exclude login, dashboard, and profile pages from rewrite rules
+RewriteCond %{REQUEST_URI} ^/(login|dashboard|profile|profile_settings|logout|login_php)\.php$ [NC]
+RewriteRule .* - [L]
+
+# Bypass rewrite rules for the /forum directory
+RewriteCond %{REQUEST_URI} ^/forum($|/) [NC]
+RewriteRule .* - [L]
+
+# Remove file extensions for everything else
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/.]+)/?$ $1.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/.]+)/([^/.]+)/?$ $1/$2.php [L]
+
+# Redirect URLs that are missing a trailing slash
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
+RewriteRule (.*)$ /$1/ [R=301,L]

@@ -1,0 +1,31 @@
+Add This To global.php:
+
+<?php
+include '../../config.php';
+
+$subdomain = basename(__DIR__);
+
+$stmt = $conn->prepare("SELECT status FROM forums WHERE subdomain=?");
+$stmt->bind_param("s", $subdomain);
+$stmt->execute();
+$stmt->bind_result($status);
+$stmt->fetch();
+
+if ($status == 'suspended') {
+    echo "<h1>This forum has been suspended by the forum administrator.</h1>";
+    exit();
+}
+
+---------------------
+
+Edit admin\modules\config\settings.php to hide importent settings that the end user shouldn't mess with.
+
+Find:
+foreach($cache_settings[$groupinfo['gid']] as $setting)
+{
+
+Add:
+			if($setting['name'] == "cookiepath" || $setting['name'] == "cookiedomain" || $setting['name'] == "cookiedomain" || $setting['name'] == "cookieprefix")
+			{
+				continue; // Skip these settings in the Admin CP
+			}
