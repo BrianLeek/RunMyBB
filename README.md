@@ -1,6 +1,8 @@
 # CreateMyBB
 
-CreateMyBB is a self-hosted multi-forum management platform built with PHP and MySQL. It allows users to quickly create their own MyBB forums with no coding experience required.
+This script is not production ready and should not be used on a public server. This script will need you to setup your v-host files to support subdomains like forumname.yourwebsite.com
+
+RunMyBB is a self-hosted multi-forum management platform built with PHP and MySQL. It allows users to quickly create their own MyBB forums with no coding experience required.
 
 This project was designed with simplicity, automation, and scalability in mind â€” perfect for hobbyist forum hosting or launching a custom MyBB-as-a-service platform.
 
@@ -50,7 +52,7 @@ This project was designed with simplicity, automation, and scalability in mind â
 ### Setup Steps
 1. **Clone or download this repo:**
    ```bash
-   git clone https://github.com/yourusername/CreateMyBB.git
+   git clone https://github.com/yourusername/RunMyBB.git
    ```
 2. **Import your createforum database:**
    This contains your `users` and `forums` tables to manage hosted forums.
