@@ -1,4 +1,4 @@
-# RunMyBB
+# RunMyBB - A MyBB Forum Multi-Forum Script
 
 This script is not production ready and should not be used on a public server. This script will need you to setup your v-host files to support subdomains like forumname.yourwebsite.com
 
